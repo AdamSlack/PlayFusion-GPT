@@ -21,6 +21,9 @@ class Point2D {
      static double twiceSignedArea(Point2D a, Point2D b, Point2D c);
 
      static bool lineSegmentsIntersect(Point2D a, Point2D b, Point2D c, Point2D d);
+
+     static bool inPolygon(std::vector<Point2D> polygon, Point2D point);
+     
    private:
      Point2D();
      

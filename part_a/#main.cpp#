@@ -70,6 +70,7 @@ int main(int argc, char** argv) {
 
   std::vector<Point2D> square = {Point2D(2,2),Point2D(2,6), Point2D(6,6), Point2D(6,2)};
 
+  std::cout<< Point2D::lineSegmentsIntersect(in, Point2D(7,7), ) << std::endl;
   bool isInIn = Point2D::inPolygon(square, in);
   bool isOutIn = Point2D::inPolygon(square,out);
 
