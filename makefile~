@@ -1,0 +1,39 @@
+# Compiler to use:
+CC=g++
+BOOST_ROOT=/usr/bin/boost_1_65_1
+
+# Flags to pass to compiler:
+CFLAGS=-c -Wall -I$(BOOST_ROOT)
+
+# Linker flags to pass to compiler:
+LDFLAGS= -L$(BOOST_ROOT)
+
+# Sources to compile:
+SOURCES=main.cpp customer.cpp
+
+# Compile sources to object files, replacing .cpp with .o:
+OBJECTS=$(SOURCES:.cpp=.o)
+
+# Name of the reslucing executable:
+EXECUTABLE=customers
+
+##
+## Make All
+##
+all: $(SOURCES) $(EXECUTABLE)
+
+# $@ is the name of the file being generated
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+# $< is the prerequisite file
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+
+##
+## Make Clean
+##
+
+clean:
+	rm $(OBJECTS) $(EXECUTABLE)
