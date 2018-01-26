@@ -1,9 +1,16 @@
 #include "point2d.h"
+
 #include <iostream>
 #include <math.h>
 #include <vector>
 #include <algorithm>
 
+
+/*
+*
+*  Point2D class implementation...
+*
+*/
 Point2D::Point2D() {
   x = 0;
   y = 0;
@@ -45,3 +52,12 @@ bool Point2D::areCollinear(Point2D a, Point2D b, Point2D c) {
 bool Point2D::formACWTurn(Point2D a, Point2D b, Point2D c) {
   return Point2D::twiceSignedArea(a,b,c) > 0;
 }
+
+bool Point2D::lineSegmentsIntersect(Point2D a, Point2D b, Point2D c, Point2D d){
+  return Point2D::twiceSignedArea(a, c, b) *
+         Point2D::twiceSignedArea(a, d, b) < 0
+         &&
+         Point2D::twiceSignedArea(c, a, d) *
+         Point2D::twiceSignedArea(c, b, d) < 0;
+}
+

@@ -3,7 +3,6 @@
 
 #include "point2d.h"
 
-
 int main(int argc, char** argv) {
   
   Point2D pointA = Point2D(0,0);
@@ -48,6 +47,23 @@ int main(int argc, char** argv) {
   std::cout << "ABD - Collinear: " << abdCollinear << " form ACW Turn: " << abdACW << std::endl;
 
   std::cout << "ABE - Collinear: " << abeCollinear << " form ACW Turn: " << abeACW << std::endl;
+
+  Point2D A = Point2D(0,0);
+  Point2D B = Point2D(2,2);
+
+  Point2D C = Point2D(0,2);
+  Point2D D = Point2D(2,0);
+  
+  Point2D E = Point2D(0,2);
+  Point2D F = Point2D(2,4);
+
+  bool abIntersect = Point2D::lineSegmentsIntersect(A,B,C,D);
+  bool acIntersect = Point2D::lineSegmentsIntersect(A,B,E,F);
+  bool bcIntersect = Point2D::lineSegmentsIntersect(C,D,E,F);
+
+  std::cout << "A and B intersect? " << abIntersect << std::endl;
+  std::cout << "A and C intersect? " << acIntersect << std::endl;
+  std::cout << "B and C intersect? " << bcIntersect << std::endl;
 
   return 0;
 }
