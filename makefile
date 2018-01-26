@@ -14,7 +14,7 @@ SOURCES= main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
 # Name of the reslucing executable:
-EXECUTABLE=customers
+EXECUTABLE= graphics
 
 ##
 ## Make All

@@ -3,9 +3,15 @@
 
 int main(int argc, char** argv) {
   
-  Point2D point = Point2D(5,5);
+  Point2D pointA = Point2D(5,5);
+  Point2D pointB = Point2D(0,0);
+  
+  pointA.describe();
+  pointB.describe();
 
-  std::cout << "Point created at position: (" << point.x <<", " << point.y << ")" << std::endl;
+  double AToB = pointA.distanceTo(pointB);
+
+  std::cout << "A to B: " << AToB << std::endl;
   
   return 0;
 }

@@ -5,7 +5,8 @@ class Point2D {
 
      Point2D(int x, int y);
      double distanceTo(Point2D point);
-
+     void describe()
+       ;
    private:
      Point2D();
 };
