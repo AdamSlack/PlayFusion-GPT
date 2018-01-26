@@ -2,7 +2,7 @@
 CC=g++
 
 # Flags to pass to compiler:
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -std=c++11
 
 # Linker flags to pass to compiler:
 LDFLAGS= 

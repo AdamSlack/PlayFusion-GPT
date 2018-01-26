@@ -1,3 +1,5 @@
+#include <vector>
+
 class Point2D {
    public:
      int x;
@@ -5,8 +7,10 @@ class Point2D {
 
      Point2D(int x, int y);
      double distanceTo(Point2D point);
-     void describe()
-       ;
+     double distanceToOrigin();
+     void describe();
+
+     static std::vector<Point2D> sortFromOrigin(std::vector<Point2D> points);
    private:
      Point2D();
 };
