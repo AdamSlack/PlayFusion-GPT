@@ -122,22 +122,36 @@ bool Point2D::inPolygon(std::vector<Point2D> polygon, Point2D point) {
     polygonPairs.push_back(std::pair<Point2D, Point2D>(*it.first, *it.second));
   }
   
-  Point2D outsidePoint = Point2D(maxX.x + 3, maxY.y + 3);
+  Point2D outsidePoint = Point2D(maxX.x + 1, maxY.y + 1);
 
-  std::vector<std::pair<Point2D, Point2D>> intersections;
-
-  std::copy_if(polygonPairs.begin(),
+  int numberOfIntersects = std::count_if(
+               polygonPairs.begin(),
                polygonPairs.end(),
-               std::back_inserter(intersections),
                [outsidePoint, point](std::pair<Point2D, Point2D> seg) -> bool {
                  return  Point2D::lineSegmentsIntersect(point, outsidePoint, seg.first, seg.second);
                });
-  outsidePoint.describe();
-  point.describe();
+  
+  int numberOfVertexIntersects = std::count_if(
+               polygonPairs.begin(),
+               polygonPairs.end(),
+               [outsidePoint, point](std::pair<Point2D, Point2D> seg) -> bool {
+                 // check if colinear and between nearest and furthest...
+                 return  Point2D::areCollinear(point, seg.first, outsidePoint) &&
+                   seg.first.x > point.x &&
+                   seg.first.y > point.y;
+               });
 
-  for(auto p : polygonPairs  ) {
+  for(auto p : polygonPairs) {
+    std::cout << "Point(" << std::endl;
     p.first.describe();
+    p.second.describe();
+    std::cout << "(" << std::endl;
   }
-  std::cout << polygonPairs.size() << std::endl;
-  return (intersections.size() % 2) != 0;
+  
+  std::cout << "Number of Vertices: " << polygonPairs.size() << std::endl;
+  std::cout << "Edge Intersect Count: " << numberOfIntersects << std::endl;
+  std::cout << "Vertex Intersect Count: " << numberOfVertexIntersects << std::endl;
+
+  
+  return (numberOfIntersects % 2) != 0 || (numberOfVertexIntersects == 1 && numberOfIntersects == 0);
 }
