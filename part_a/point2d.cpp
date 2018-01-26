@@ -33,3 +33,15 @@ std::vector<Point2D> Point2D::sortFromOrigin(std::vector<Point2D> points) {
                      });
   return points;
 }
+
+double Point2D::twiceSignedArea(Point2D a, Point2D b, Point2D c) {
+  return ((b.x - a.x)*(c.y - a.y)) - ((b.y - a.y)*(c.x - a.x));
+}
+
+bool Point2D::areCollinear(Point2D a, Point2D b, Point2D c) {
+  return Point2D::twiceSignedArea(a,b,c) == 0;
+}
+
+bool Point2D::formACWTurn(Point2D a, Point2D b, Point2D c) {
+  return Point2D::twiceSignedArea(a,b,c) > 0;
+}

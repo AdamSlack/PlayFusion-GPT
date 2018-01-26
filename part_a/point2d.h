@@ -11,6 +11,13 @@ class Point2D {
      void describe();
 
      static std::vector<Point2D> sortFromOrigin(std::vector<Point2D> points);
+
+     static bool areCollinear(Point2D a, Point2D b, Point2D c);
+
+     static bool formACWTurn(Point2D a, Point2D b, Point2D c);
+
+     static double twiceSignedArea(Point2D a, Point2D b, Point2D c);
    private:
      Point2D();
+     
 };
