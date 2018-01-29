@@ -101,29 +101,36 @@ bool Point2D::lineSegmentsIntersect(Point2D a, Point2D b, Point2D c, Point2D d){
  */
 bool Point2D::inPolygon(std::vector<Point2D> polygon, Point2D point) {
   // uses crossing number or even-odd rule algo'
+
+  /* Find the max x-component of the polygon*/
   Point2D maxX = *std::max_element(polygon.begin(), polygon.end(),
                                [](Point2D a, Point2D b) -> bool {
                                  return a.x < b.x;
                                });
 
+  /* Find the max y-component of the polygon */
   Point2D maxY = *std::max_element(polygon.begin(), polygon.end(),
                                [](Point2D a, Point2D b) -> bool {
                                  return a.y < b.y;
                                });
   
   std::vector<std::pair<Point2D, Point2D>> polygonPairs;
-  
+
+  /* We want Pairs to be made from each vertex. The last vertex needs to link with the first. */
   polygon.push_back(polygon.front());
 
+  /* form segment vertex pairs from the polygon vector. */
   for (std::pair<std::vector<Point2D>::iterator, std::vector<Point2D>::iterator>
          it(polygon.begin(), ++polygon.begin());
        it.second != polygon.end();
        ++it.first, ++it.second){
     polygonPairs.push_back(std::pair<Point2D, Point2D>(*it.first, *it.second));
   }
-  
+
+  /* Use the max x and y components of the polygon, and move it away by one. */
   Point2D outsidePoint = Point2D(maxX.x + 1, maxY.y + 1);
 
+  /* count the number of line intersects */
   int numberOfIntersects = std::count_if(
                polygonPairs.begin(),
                polygonPairs.end(),
@@ -131,6 +138,7 @@ bool Point2D::inPolygon(std::vector<Point2D> polygon, Point2D point) {
                  return  Point2D::lineSegmentsIntersect(point, outsidePoint, seg.first, seg.second);
                });
   
+  /* Count the number of direct vertex intersects */
   int numberOfVertexIntersects = std::count_if(
                polygonPairs.begin(),
                polygonPairs.end(),
@@ -140,6 +148,7 @@ bool Point2D::inPolygon(std::vector<Point2D> polygon, Point2D point) {
                    seg.first.x > point.x &&
                    seg.first.y > point.y;
                });
-  
+
+  /* Not perfect. but if there is a direct intersect with a vertex, then it actually intersects 2 lines...*/
   return (numberOfIntersects % 2) != 0 || (numberOfVertexIntersects == 1 && numberOfIntersects == 0);
 }
