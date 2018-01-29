@@ -140,18 +140,6 @@ bool Point2D::inPolygon(std::vector<Point2D> polygon, Point2D point) {
                    seg.first.x > point.x &&
                    seg.first.y > point.y;
                });
-
-  for(auto p : polygonPairs) {
-    std::cout << "Point(" << std::endl;
-    p.first.describe();
-    p.second.describe();
-    std::cout << "(" << std::endl;
-  }
-  
-  std::cout << "Number of Vertices: " << polygonPairs.size() << std::endl;
-  std::cout << "Edge Intersect Count: " << numberOfIntersects << std::endl;
-  std::cout << "Vertex Intersect Count: " << numberOfVertexIntersects << std::endl;
-
   
   return (numberOfIntersects % 2) != 0 || (numberOfVertexIntersects == 1 && numberOfIntersects == 0);
 }
