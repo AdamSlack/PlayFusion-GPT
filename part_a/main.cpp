@@ -3,6 +3,11 @@
 
 #include "point2d.h"
 
+/*
+ *  Main: Used to demonstrate the implemented Point2D Class.
+ *
+ */
+
 int main(int argc, char** argv) {
   
   Point2D pointA = Point2D(0,0);
