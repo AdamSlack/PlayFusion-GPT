@@ -8,13 +8,13 @@ CFLAGS=-c -Wall -std=c++11
 LDFLAGS= 
 
 # Sources to compile:
-SOURCES= main.cpp point2d.cpp
+SOURCES= main.cpp matcher.cpp
 
 # Compile sources to object files, replacing .cpp with .o:
 OBJECTS=$(SOURCES:.cpp=.o)
 
 # Name of the reslucing executable:
-EXECUTABLE=graphics
+EXECUTABLE=lightseekers
 
 ##
 ## Make All
