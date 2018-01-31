@@ -63,7 +63,7 @@ std::vector<LS::Player> LS::Matcher::generatePlayers (int n_players) {
   players.reserve(n_players);
   
   for(int i = 0; i < n_players; ++i) {
-    players.push_back(i+1);
+    players.push_back(LS::Player(i+1));
   }
 
   return players;
@@ -75,13 +75,13 @@ void LS::Matcher::printRounds(std::vector<LS::Round> rounds) {
     std::cout << "Round " << i+1 << ": " << std::endl;
     std::cout << "First:\t" ;
     for(LS::Match m : rounds[i]) {
-      std::cout << m.first << "\t";
+      std::cout << m.first << ",\t";
     }
     std::cout << std::endl;
 
     std::cout << "Secnd:\t" ;
     for(LS::Match m : rounds[i]) {
-      std::cout << m.second << "\t";
+      std::cout << m.second << ",\t";
     }
       std::cout << "\n" << std::endl;
 

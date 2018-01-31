@@ -5,7 +5,7 @@
 
 int main(int argc, char** argv) {
    
-  std::vector<LS::Player> players = LS::Matcher::generatePlayers(6);
+  std::vector<LS::Player> players = LS::Matcher::generatePlayers(20);
 
   std::vector<LS::Round> rounds = LS::Matcher::roundRobinAllocation(players, false);
   std::vector<LS::Round> secondRounds = LS::Matcher::roundRobinAllocation(players, true);
