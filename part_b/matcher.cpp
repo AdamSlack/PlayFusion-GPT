@@ -12,6 +12,10 @@ LS::Matcher::Matcher() {
 //       but this helped me work through the problem in an almost visual way.
 std::vector<LS::Round> LS::Matcher::roundRobinAllocation(std::vector<LS::Player> players, bool flipStart) {
   // Initialising some potentially useful variables...
+  if(players.size() % 2 == 1) {
+    //Odd number of players. gonna add a 'blank player' that reperesents a bye round.
+    players.push_back(LS::Player(-1));
+  }
   std::vector<LS::Round> rounds;
   int numPlayers = players.size();
   int gamesPerRound = floor(numPlayers/2);
