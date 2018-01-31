@@ -5,9 +5,9 @@
 
 namespace LS {
   
-  typedef std::vector<Match> Round;
-  typedef int Player;
+  typedef int Player;  
   typedef std::pair<Player,Player> Match;
+  typedef std::vector<Match> Round;
 
   class Matcher {
 
@@ -16,9 +16,9 @@ namespace LS {
 
     Matcher();
 
-    static std::vector<Round> roundRobinAllocation(std::vector<Player> n_players);
+    static std::vector<Round> roundRobinAllocation(std::vector<Player> n_players, bool flipStart);
     static std::vector<Player> generatePlayers(int n_players);
-    static std::vector<Round> printRounds(std::vector<Round> rounds);
+    static void printRounds(std::vector<Round> rounds);
   protected:
     // Nuthin
 

@@ -4,17 +4,14 @@
 
 
 int main(int argc, char** argv) {
-  
-  LS::Matcher* m = new LS::Matcher();
-  
-  std::cout << "Hello "<< m->world << std::endl;
-  
-  std::vector<LS::player> players = LS::Matcher::generatePlayers(6);
-  for (auto p : players) {
-    std::cout << p;
-  }
-  std::cout << std::endl;
-  std::vector<LS::round> rounds = LS::Matcher::roundRobinAllocation(players);
+   
+  std::vector<LS::Player> players = LS::Matcher::generatePlayers(6);
+
+  std::vector<LS::Round> rounds = LS::Matcher::roundRobinAllocation(players, false);
+  std::vector<LS::Round> secondRounds = LS::Matcher::roundRobinAllocation(players, true);
+  rounds.insert(rounds.end(), secondRounds.begin(), secondRounds.end());
+
+  LS::Matcher::printRounds(rounds);
 
   return 0;
 }
