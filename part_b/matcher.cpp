@@ -7,6 +7,16 @@ LS::Matcher::Matcher() {
   world = "World!";
 }
 
+void LS::Matcher::saveRounds(std::vector<LS::Round> rounds, std::string dir, std::string filePrefix) {
+
+}
+
+std::vector<LS::Round> LS::Matcher::roundRobinAllocationTwice(std::vector<LS::Player> players) {
+  std::vector<LS::Round> rounds = LS::Matcher::roundRobinAllocation(players, false);
+  std::vector<LS::Round> secondSitting = roundRobinAllocation(players, true);
+  rounds.insert(rounds.end(), secondSitting.begin(), secondSitting.end());
+  return rounds;
+}
 
 // Note: i feel this could be improved massively by using modular arithmetic to index the vector instead of creating copies.
 //       but this helped me work through the problem in an almost visual way.

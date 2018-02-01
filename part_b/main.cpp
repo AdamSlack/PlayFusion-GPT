@@ -6,12 +6,10 @@
 int main(int argc, char** argv) {
    
   std::vector<LS::Player> players = LS::Matcher::generatePlayers(5);
-
-  std::vector<LS::Round> rounds = LS::Matcher::roundRobinAllocation(players, false);
-  std::vector<LS::Round> secondRounds = LS::Matcher::roundRobinAllocation(players, true);
-  rounds.insert(rounds.end(), secondRounds.begin(), secondRounds.end());
+  std::vector<LS::Round> rounds = LS::Matcher::roundRobinAllocationTwice(players);
 
   LS::Matcher::printRounds(rounds);
 
+  LS::Matcher::saveRounds(rounds, "/rounds", "fivePlayers");
   return 0;
 }
