@@ -2,13 +2,25 @@
 #include <iostream>
 #include "math.h"
 #include <algorithm>
+#include <fstream>
+
 
 LS::Matcher::Matcher() {
   world = "World!";
 }
 
-void LS::Matcher::saveRounds(std::vector<LS::Round> rounds, std::string dir, std::string filePrefix) {
-
+void LS::Matcher::saveRounds(std::vector<LS::Round> rounds, std::string filePrefix) {
+  std::ofstream outFile;
+  int suffix = 1;
+  for(LS::Round r : rounds) {
+    outFile.open("rounds/" + filePrefix + "Round" + std::to_string(suffix) + ".csv", std::fstream::out | std::fstream::trunc);
+    outFile << "First,\tSecond\n";
+    for (LS::Match m : r) {
+      outFile << m.first << ",\t\t" << m.second << "\n";
+    }
+    outFile.close();
+    ++suffix;
+  }
 }
 
 std::vector<LS::Round> LS::Matcher::roundRobinAllocationTwice(std::vector<LS::Player> players) {

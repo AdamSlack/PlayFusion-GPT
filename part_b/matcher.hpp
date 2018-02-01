@@ -20,7 +20,7 @@ namespace LS {
     static std::vector<Round> roundRobinAllocationTwice(std::vector<Player> players);
     static std::vector<Player> generatePlayers(int n_players);
     static void printRounds(std::vector<Round> rounds);
-    static void saveRounds(std::vector<Round> rounds, std::string dir, std::string filePrefix);
+    static void saveRounds(std::vector<Round> rounds, std::string filePrefix);
   protected:
     // Nuthin
 
