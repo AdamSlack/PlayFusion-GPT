@@ -14,9 +14,9 @@ void LS::Matcher::saveRounds(std::vector<LS::Round> rounds, std::string filePref
   int suffix = 1;
   for(LS::Round r : rounds) {
     outFile.open("rounds/" + filePrefix + "Round" + std::to_string(suffix) + ".csv", std::fstream::out | std::fstream::trunc);
-    outFile << "First,\tSecond\n";
+    outFile << "First, Second\n";
     for (LS::Match m : r) {
-      outFile << m.first << ",\t\t" << m.second << "\n";
+      outFile << m.first << ", " << m.second << "\n";
     }
     outFile.close();
     ++suffix;
